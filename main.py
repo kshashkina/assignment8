@@ -69,8 +69,23 @@ def draw():
 
 
 def update():
+    global lives
     paddle.on_mouse_move(pygame.mouse.get_pos())
     ball.update()
+    # check if the ball hits the paddle
+    if ball.y + ball.radius >= paddle.y - paddle.height and pygame.mouse.get_pos()[0] <= ball.x <= \
+            pygame.mouse.get_pos()[0] + paddle.width:
+        ball.speed_y *= -1
+        # if paddle is really close to the walls, ball changes its direction along x-axis (more variety in ball movements)
+        if pygame.mouse.get_pos()[0] + paddle.width <= 125 or pygame.mouse.get_pos()[0] + paddle.width >= 575:
+            ball.speed_x *= -1
+    # check if ball is under the paddle
+    if ball.y + ball.radius >= HEIGHT:
+        lives -= 1
+        ball.x = pygame.mouse.get_pos()[0]
+        ball.y = 500
+        ball.speed_x = 3
+        ball.speed_y = -3
 
 
 pgzrun.go()
