@@ -66,6 +66,8 @@ def draw():
     screen.fill((99, 112, 105))
     paddle.draw()
     ball.draw()
+    if lives == 0:
+        screen.draw.text("GAME   OVER!", (150, 300), fontname="font", fontsize=60)
 
 
 def update():
