@@ -86,6 +86,10 @@ def update():
         ball.y = 500
         ball.speed_x = 3
         ball.speed_y = -3
+        # if game is over -> stop movement of ball
+        if lives == 0:
+            ball.speed_x = 0
+            ball.speed_y = 0
 
 
 pgzrun.go()
