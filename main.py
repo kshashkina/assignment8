@@ -53,3 +53,24 @@ class Obstacle:
 
     def draw(self):
         screen.draw.filled_circle((self.x, self.y), self.radius, (25, 31, 28))
+
+
+WIDTH = 600
+HEIGHT = 600
+lives = 3
+paddle = Paddle(250, 550, 100, 25)
+ball = Ball(300, 500, 10, 3, -3)
+
+
+def draw():
+    screen.fill((99, 112, 105))
+    paddle.draw()
+    ball.draw()
+
+
+def update():
+    paddle.on_mouse_move(pygame.mouse.get_pos())
+    ball.update()
+
+
+pgzrun.go()
